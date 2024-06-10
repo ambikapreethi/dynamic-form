@@ -14,10 +14,10 @@ function DynamicForm()
     const dispatch=useDispatch();
         const handleAddInput=()=>
             {
-                const name=document.getElementById("name").value;
-                const password=document.getElementById("password").value;
-                const address=document.getElementById("address").value;
-                dispatch(addInputField({name:name,password:password,address:address}));
+                const name=document.getElementById("name");
+                const password=document.getElementById("password");
+                const address=document.getElementById("address");
+                dispatch(addInputField({name,password,address}));
             }
         const handleRemoveInput=()=>
             {
@@ -42,30 +42,33 @@ function DynamicForm()
         <div className="userDetails">
            <h3> User Details:</h3><br/><br/>
             <button onClick={showuserModal}>open user Form</button>
-        <Modal show={showModal} onHide={hideUserModal}>
+        <Modal className="userModal" show={showModal} onHide={hideUserModal}>
         <Modal.Header closeButton>
             <Modal.Title>User Form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            
+           <div>
+                 <label>Name:  </label><span>   </span>
+                 <input name="Name" id="name" placeholder="enter name" /><span> *</span><br/><br/>
+                 <label>Password:  </label><span>  </span>
+                 <input name="Password" id="password" placeholder="enter password" /><span> *</span><br/><br/>
+                 <label>Address:  </label><span>  </span>
+                 <textarea name="address" id="address" placeholder="enter name" /><span> *</span><br/><br/><hr/>
+          </div>
+            {modalInputs.map((input,index)=>(
             <div>
                  <label>Name:  </label><span>   </span>
                  <input name="Name" id="name" placeholder="enter name" /><span> *</span><br/><br/>
                  <label>Password:  </label><span>  </span>
                  <input name="Password" id="password" placeholder="enter password" /><span> *</span><br/><br/>
                  <label>Address:  </label><span>  </span>
-                 <textarea name="address" id="address" placeholder="enter name" /><span> *</span><br/><br/>
-           <button onClick={handleRemoveInput}>Remove</button>
-           <button onClick={handleAddInput}>Add</button>
-           <button onClick={handleResetInput}>Reset</button>
-           </div><br/><br/>
-           <div>
-           {modalInputs.map((input,index)=>
-           (
-                <div key="index"><p><span>Name:</span> {input.name} <span>Password:</span>  {input.password}
-                  <span>Address:</span>   {input.address}</p></div>
-           ))}
+                 <textarea name="address" id="address" placeholder="enter address" /><span> *</span><br/><br/>
+           <button onClick={handleRemoveInput}>Remove</button><hr/>
            </div>
+         ))}
+         <div>
+            <button onClick={handleAddInput}>Add</button>
+          </div>
         </Modal.Body>
         <Modal.Footer>
             <button onClick={hideUserModal}>Close</button>
