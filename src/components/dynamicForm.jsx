@@ -23,12 +23,7 @@ function DynamicForm()
             {
                 dispatch(removeInputField());
             }
-        const handleResetInput=()=>
-            {
-                document.getElementById("name").value="";
-                document.getElementById("password").value="";
-                document.getElementById("address").value="";
-            }
+        
         const hideUserModal=()=>
             {
                 setShowModal(false);
