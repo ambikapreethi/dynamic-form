@@ -53,7 +53,7 @@ function DynamicForm()
                  <label>Password:  </label><span>  </span>
                  <input name="Password" id="password" placeholder="enter password" /><span> *</span><br/><br/>
                  <label>Address:  </label><span>  </span>
-                 <textarea name="address" id="address" placeholder="enter name" /><span> *</span><br/><br/><hr/>
+                 <textarea name="address" id="address" placeholder="enter address" /><span> *</span><br/><br/><hr/>
           </div>
             {modalInputs.map((input,index)=>(
             <div>
